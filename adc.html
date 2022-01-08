@@ -59,8 +59,33 @@
 					<div id="main">
 						<div class="inner">
 							<h1>Analog-to-Digital Convertor</h1>
-							<span class="image main"><img src="images/pic13.jpg" alt="" /></span>
-							<p> SMTHN....</p>
+							<span class="image main"><img src="images/circuitRotated.jpg" alt="" /></span>
+							<p> This was a final class project where we had to build 
+								an ADC convertor which converted an analog signal to a discrete signal.
+								This project comprised of integrators, comparators, schmitt triggers, logic gates, 
+								and A LOT of debugging! The final circuit comprised of the following components:
+							</p>
+							<h2>Overview</h2>
+							<p>Most signals in nature (voices, power levels, etc.) are analog in nature. It is very important to read/load data 
+								from these signals however we need to convert these to digital first. 
+								This can be achieved using an Analog-to-Digital Convertor.</p>
+							<p> The general steps in achieving this conversion are as follows</p>
+							<ul>
+								<li>On reciept of an appropriate trigger pulse, a second stop pulse is generated at time t, where t represents
+									the span of time lapsed between the trigger pulse and the second stop pulse. This t is proportional to the
+									voltage being digitized.<li></li>
+								<li>By gating a free running clock pulse train with this trigger pulse (whose time period is equal to t) and
+									counting the number of clock pulses this ADC is obtained.</li>
+							</ul>
+							<p>Below is the circuit diagram (taken from class notes) of the 
+								final integrated circuit:</p>
+								<span class="image circuit"><img src="images/circuitDiag.png" alt="" /></span>
+							<p style="text-align:center"> <b>You can read the full technical report 
+								<a href="pdfs/Lab6Report.pdf">here</a></b>
+							</p>
+							<a href="pdfs/Lab6Report.pdf" class="button">Full Lab Report</a>
+							
+							
 						</div>
 					</div>
 				<!-- Footer -->

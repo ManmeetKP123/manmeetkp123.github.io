@@ -58,9 +58,68 @@
 				<!-- Main -->
 					<div id="main">
 						<div class="inner">
+							<center>
 							<h1>Mini-projects in Java</h1>
-							<span class="image main"><img src="images/pic13.jpg" alt="" /></span>
-							<p>This course brings back bitter sweet memories</p>
+							<span class="image main"><img src="images/betterJava.png" alt="Screenshot of Java code in IntelliJ" 
+								width="900" height="500"/></span></center>
+							<p>CPEN 221, a notoriously time-consuming second-year course, lived up to its reputation.
+								This course completely shifted my career interests from mechanical and electrical
+								to software, but this revelation came at the cost of a lot of late-nights, tears, and overall questioning 
+								whether I was in the right program. The learning curve for this course
+								was huge as coming into the course I knew little more than if-statements and for-loops.
+								But I was fortunate to have an amazing instructor who guided us along the way (Shout-out to Sathish!).</p>
+							<p>
+								Over the course of the term, we worked on three mini-projects in groups of 3. Since most of the projects
+								are reused year after year, I will not go into the technical details about them or post the associated 
+								github repo. Hence, following is a brief summary of each of the projects and what we accomplished at 
+								the end of each.
+							</p>
+							<ul class="java">
+								<li class="javaListli"><h2 class="javaHeader">Image Processing Library</h2> 
+									For this project, we had to implement an image processing library in Java to perform 
+									a total of 11 functions. Three of the most intriguing functions performed by our code were:
+									<ul class="javaList">
+										<li>Green Screen: Performing green screen on a source image with a given image.</li>
+										<li>Text Align: Aligning an image of a scanned text document by computing its discrete fourier transform.</li>
+
+										<li>Rotation: Rotates a given input image.</li>
+									</ul>
+									Throughout the programming process we ensured to perform regular and thorough testing using
+									JUnit tests. At the end of the project we achieved a line-coverage of 100% and branch coverage of
+									95%.
+								</li>
+								<li class="javaListli"><h2 class="javaHeader">The Graph Abstract Data Type</h2>
+									The second project involved implementing a graph datatype using an adjacency matrix
+									and an adjacency list. After implementing the datatype, we utilized it in analyzing a 
+									36MB file containing username and followers of some twitter users. Some of the algorithms
+									that we implemented to analyze this file are briefly described below:
+									<ul class="javaList">
+										<li>Depth first search: This algorithm starts at the root node and explores as far as possible 
+											along each branch before backtracking.</li>
+										<li>Breadth first search: This algorithm starts at the root node and explores all nodes at the present depth 
+											prior to moving on to the nodes at the next depth level.</li>
+										<li>Common Upstream vertices: This function returned a list of vertices which had an edge
+											to two input vertices contained in the given graph.
+										</li>
+									</ul>
+									Since the size of the given file is huge, it was important to achieve the above functionality
+									relatively fast. My team's implementation satisfied this requirement and further achieved a 
+									line coverage of 90%. Throughout the project, we practiced proper subtyping and OOP principles 
+									including frequent git committing, writing clear 
+									specifications, and representation invariants for each class used.
+								</li>
+								<li><h2 class="javaHeader">WikiMediatorServer</h2>
+									The final project involved implementing a finite-space finite-time buffer in Java for 
+									caching wiki query functions to offset 
+									slow network requests. Throughout this project as well, 
+									we practiced proper sub-typing and OOP principles by drafting proofs, thread-safe arguments, and 
+									specifications to support the concurrency and parallelism offered by our implementation. 
+									In addition to the above, we implemented a structured query functionality to enable parsing 
+									complex and nested queries using 
+									ANTLR and parse tree.
+								</li>
+									
+							</ul>
 						</div>
 					</div>
 

@@ -65,10 +65,85 @@
 								I decided to program an AI capable of playing the connect-4 game. We started
 								this project over the winter project and are currently working on improving our
 								current model and speeding up the training process. 
-							</p>
+								The key source of inspiration for this project was this <a href="https://web.stanford.edu/class/aa228/reports/2019/final106.pdf"
+								target="_blank">Stanford paper</a> and the <a href="https://arxiv.org/pdf/1712.01815v1.pdf"
+								target="_blank">AlphaZero</a> paper by Google's DeepMind. 
 							<p>I am very grateful to Tiffany for suggesting this idea and you can check out
 								her website (which I personally love!) <a href="https://tiffanymatthe.com/" target="_blank">here.</a>
 							</p>
+							<h2>Overview</h2>
+							<h3 class='connectHeader'>Main Algorithms</h3>
+							<p>Before implementing the neural network, we implemented two algorithms: AlphaBeta Pruning search
+								and Monte-Carlo Tree Search algorithm to get a sense of the algorithms and their respective performances.
+								For each of these algorithms, we verified their functionality and accuracy using Human vs. Algorithm games.
+								Quickly after implementing and improving these algorithms, any game played against it resulted in a 100%
+								win rate for the algorithm. Following is a brief overview of how each of the algorithms works.
+							</p>
+							<ul>
+								<li><strong>AlphaBeta Pruning Search</strong>: This algorithm is based on minmax algorithm but is 
+								a huge improvement in performance over the <a href= "https://en.wikipedia.org/wiki/Minimax" target=
+								"_blank">minmax	</a> algorithm. Instead of traversing through all the possibilities,
+								it stops evaluating a move when at least one possibility has been found that proves the 
+								move to be worse than a previously examined move. Such moves need not be evaluated further. 
+								When this algorithm is applied to a minmax tree, the output is same as that of minmax but 
+								computed faster since it prunes away branches of the tree that cannot possibly influence the 
+							final decision.</li>
+								<li><strong>MCTS</strong>: This algorithm focuses on the analyzing the most promising moves 
+								in a game tree expanding the said tree by random sampling of the search space.It requires
+								four necessary steps which are discussed below.
+								<ul>
+									<li>Selection: Choose a successive child nodes of the root 
+										until a leaf node is reached. In our implementation of this algorithm, 
+										the algorithm selects a child node with the highest <a href="https://www.chessprogramming.org/UCT">UCT score.</a>
+									</li>
+									<li>Expansion: Unless a leaf node which ends the game decisively is reached,
+										expand into the unexpanded child nodes. Child nodes are any valid game moves from 
+										the game position defined by the leaf node.
+									</li>
+									<li>Simulation: Choose a random playout or rollout of the game. In our implementation
+										we continue picking random moves until a terminal state of the game is reached.
+									</li>
+									<li>
+										Backpropagation: Use the result of the above playout to update the information
+										in the nodes on the path from the current child node to the root node.
+									</li>
+								</ul>
+							</li>
+							</ul>
+							<h3 class="connectHeader">Neural Network Architecture</h3>
+							<p>The model architecture is closely based on the AlphaZero and AlphaGo Zero models and uses a deep neural network.
+								The model utilizes a residual neural network and is trained using reinforcement learning.
+								Residual neural network helps in tackling the vanishing gradient problem using identity mapping since 
+								having just a deep neural network with large number of layers leads to an increased training error percentage.
+								Having a reinforcement learning training algorithm allowed us to generate data from the self-played games
+								instead of accumulating external data. 
+							</p>
+							<p class="strongA">Input and Outputs of the network</p>
+							<p>The neural network itself takes a 6 x 7 x 2 dimensional image stack with 2 feature planes, namely:
+								the plane containing the first player's tokens, and the second plane containing the second player's tokens.
+								We initially went with 3 feature planes, the third feature plane represented whose turn it was. We found
+								that this was futile since in a game like connect-4 one can figure out whose turn it is based on 
+								the number of tokens currently played.
+							</p>
+							<p>The residual structure of the network was split into two heads: policy and value.
+								Policy head represents the probabilities of each move (vector of length 7) and the 
+								value head represented the probability of the current player winning (1 value). To
+								achieve this split, we implemented the <a href="https://towardsdatascience.com/building-a-multi-output-convolutional-neural-network-with-keras-ed24c7bc1178">
+									Rodrigo Bressan's</a> technique.
+							</p>
+							<p class="strongA"> Training</p>
+							<p>The training process for the neural network includes self-play games, moves for which
+								are chosen with the help of the network, training on the generated game data, and iteratively
+								executing these steps iteratively. The self-play games are executed using the MCTS algorithm described above.</p>
+							<p>The biggest challenge that we faced was the lack of computational resources such as a GPU.
+								We tried implementing multi-processing in tensorflow but that only worked reliably
+								with a Mac and not with windows. Hence, we only had one Mac to train the model on. We have 
+								a model that's being trained currently on the said Mac.
+							</p>
+							<p>This project is still in the works and the github repo for it is linked below.</p>
+							<a href="https://github.com/tiffanymatthe/connect-four" class="icon brands style2 repoLink fa-github"><span class="label">GitHub</span></a>
+							
+							
 						</div>
 					</div>
 

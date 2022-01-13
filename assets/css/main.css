@@ -2785,6 +2785,10 @@ input, select, textarea {
 					opacity: 0;
 				}
 
+				.tiles.tech{
+					font-weight: 1rem;
+				}
+
 					.tiles article > a .content > :last-child {
 						margin-bottom: 0;
 					}
